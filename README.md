@@ -1,4 +1,4 @@
-# Zorvyn Finance Dashboard
+# Finance Dashboard
 
 > A clean, interactive personal finance dashboard for tracking income, expenses, and spending patterns — built with React 18 and Vite.
 
@@ -230,7 +230,7 @@ Cards and list items fade upward into position with staggered delays on every ta
 ## 4. Project Structure
 
 ```
-zorvyn/
+Finance/
 ├── public/
 ├── src/
 │   ├── components/
