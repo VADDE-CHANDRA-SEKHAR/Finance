@@ -131,11 +131,11 @@ export default function App() {
 
   const exportCSV = () => {
     const rows = [['Date','Description','Category','Type','Amount (₹)'], ...filtered.map(t => [t.date, t.description, t.category, t.type, t.amount])];
-    const a = document.createElement('a'); a.href = 'data:text/csv;charset=utf-8,' + encodeURIComponent(rows.map(r => r.join(',')).join('\n')); a.download = 'zorvyn.csv'; a.click();
+    const a = document.createElement('a'); a.href = 'data:text/csv;charset=utf-8,' + encodeURIComponent(rows.map(r => r.join(',')).join('\n')); a.download = 'Finance.csv'; a.click();
     showToast(`Exported ${filtered.length} transactions as CSV`);
   };
   const exportJSON = () => {
-    const a = document.createElement('a'); a.href = 'data:application/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(filtered, null, 2)); a.download = 'zorvyn.json'; a.click();
+    const a = document.createElement('a'); a.href = 'data:application/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(filtered, null, 2)); a.download = 'Finance.json'; a.click();
     showToast(`Exported ${filtered.length} transactions as JSON`);
   };
   const clearFilters = () => { setSearch(''); setFilterCat('All'); setFilterType('All'); setFromDate(''); setToDate(''); setSortBy('date_desc'); };
@@ -149,10 +149,9 @@ export default function App() {
       {/* HEADER */}
       <header style={{ background: C.header, borderBottom: `1px solid ${C.headerBorder}`, padding: '13px 24px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', position: 'sticky', top: 0, zIndex: 100, boxShadow: dark ? '0 2px 16px rgba(0,0,0,.5)' : '0 2px 8px rgba(0,0,0,.07)' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-          <div style={{ width: 38, height: 38, borderRadius: 13, background: 'linear-gradient(135deg,#6366f1,#8b5cf6)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 900, fontSize: 17, color: '#fff', boxShadow: '0 4px 14px rgba(99,102,241,.5)' }}>Z</div>
+          
           <div>
-            <span style={{ fontWeight: 800, fontSize: 17, letterSpacing: '-0.02em' }}>Zorvyn</span>
-            <span style={{ marginLeft: 8, fontSize: 11, padding: '2px 9px', borderRadius: 99, background: 'rgba(99,102,241,.18)', color: '#a5b4fc', fontWeight: 600 }}>Finance</span>
+            <span style={{ fontWeight: 800, fontSize: 17, letterSpacing: '-0.02em' }}>Finance</span>
           </div>
           <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginLeft: 8, padding: '3px 10px', borderRadius: 99, background: apiStatus === 'live' ? 'rgba(34,197,94,.12)' : 'rgba(251,191,36,.12)', border: `1px solid ${apiStatus === 'live' ? 'rgba(34,197,94,.3)' : 'rgba(251,191,36,.3)'}` }}>
             {apiStatus === 'connecting'
